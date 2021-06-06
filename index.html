@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<! This style sheet is taken from  https://www.w3schools.com/howto/howto_js_tabs.asp>
+	<link href="styles/style.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Martel:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body onload="javascript:populateListProductChoices(this.id, 'displayProduct'), openInfo(event, 'Client'), selectedItems()">
+<header>Great Eats Grocery</header>
+<!-- Tab links, each one with an onclick event associated with it -->
+<div class="tab">
+  <button class="tablinks" onclick="openInfo(event, 'Client')">Client</button>
+  <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
+  <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
+</div>
+
+<!-- Tab content -->
+<div id="Client" class="tabcontent">
+  <h3>Client Information</h3><hr>
+  <p>We want to know a bit about you and your dietary preferences. Please let us know if you have any needs: </p>
+  <div class="dietSelect" name="dietSelect" onchange="populateListProductChoices(this.id, 'displayProduct')">
+    <div class="checkbox">
+      <input type="checkbox" class="lactoseFreeCheckbox" id="lactoseFree" name="restriction">
+      <label for="LactoseIntolerant">Lactose Free</label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" class="nutFreeCheckbox" id="nutFree" name="restriction">
+      <label for="NutAllergy">Nut-Free</label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" class="organicCheckbox" id="organic" name="restriction">
+      <label for="OrganicProductsOnly">Organic Products Only</label>
+    </div>
+  </div>
+  <br>
+  <button class="tabchange" onclick="openInfo(event, 'Products')">Continue to products</button>
+</div>
+
+<div id="Products" class="tabcontent">
+  <h3>Your targeted products</h3><hr>
+  <p>Here are some products you might like based on your dietary restrictions. Please select any you would like to purchase and add them to your cart.</p>
+	 <div id="displayProduct"></div>
+   <br>
+	 <button id="addCart" type="button" class="block" onclick="selectedItems()">
+		Add selected items to cart
+	</button>
+</div>
+
+<div id="Cart" class="tabcontent">
+  <h3>Cart</h3><hr>
+  <div id="displayCart"></div>
+  <br>
+  <button class="tabchange" onclick="openInfo(event, 'Products')">Continue shopping</button>
+  <br><br>
+  <button class="tabchange">Checkout</button>
+</div>
+
+<script src="scripts/groceries.js"></script>
+<script src="scripts/main.js"></script>
+
+</body>
+<footer class="footer">
+  <small>Website designed by Great Eats Grocery</small>
+</footer>
+</html>
