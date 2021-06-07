@@ -4,74 +4,94 @@
 
 var products = [
 	{
-		name: "Organic brocoli",
+		name: "Organic broccoli",
 		lactoseFree: true,
 		nutFree: true,
+		vegan: false,
 		organic: true,
-		price: 1.99
+		price: 1.99,
+		img: "photos/broccoli.png",
 	},
 	{
 		name: "Bread",
 		lactoseFree: false,
 		nutFree: true,
+		vegan: true,
 		organic: false,
-		price: 2.35
+		price: 2.35,
+		img: "photos/bread.png"
 	},
 	{
 		name: "Organic salmon",
 		lactoseFree: true,
 		nutFree: true,
+		vegan: false,
 		organic: true,
-		price: 9.99
+		price: 9.99,
+		img: "photos/salmon.jpg"
 	},
 	{
 		name: "Tomatoes",
 		lactoseFree: true,
 		nutFree: true,
+		vegan: true,
 		organic: false,
-		price: 2.99
+		price: 2.99,
+		img: "photos/tomato.jpg"
 	},
 	{
 		name: "New York Striploin Steak",
 		lactoseFree: true,
 		nutFree: true,
+		vegan: false,
 		organic: false,
-		price: 35.99
+		price: 35.99,
+		img: "photos/steak.jpg"
 	},
 	{
 		name: "Skim milk",
 		lactoseFree: false,
 		nutFree: true,
+		vegan: false,
 		organic: false,
-		price: 3.99
+		price: 3.99,
+		img: "photos/milk.jpg"
 	},
 	{
 		name: "Organic eggs",
 		lactoseFree: true,
 		nutFree: true,
+		vegan: false,
 		organic: true,
-		price: 11.99
+		price: 11.99,
+		img: "photos/eggs.jpg"
 	},
 	{
 		name: "Organic brown rice pasta",
 		lactoseFree: true,
 		nutFree: true,
+		vegan: true,
 		organic: true,
-		price: 4.99
+		price: 4.99,
+		img: "photos/pasta.jpg"
 	},
 	{
 		name: "Organic avocado",
 		lactoseFree: true,
 		nutFree: true,
+		vegan: false,
 		organic: true,
-		price: 4.99
+		price: 4.99,
+		img: "photos/avocado.jpeg"
 	},
 	{
 		name: "Organic pistachio ice cream",
 		lactoseFree: false,
 		nutFree: false,
+		vegan: false,
 		organic: true,
-		price: 14.99
+		price: 14.99,
+		img: "photos/icecream.png"
 	}
 ];
 	
@@ -91,15 +111,22 @@ function restrictListProducts(prods) {
 		else if ((document.querySelector(".nutFreeCheckbox").checked) && (prods[i].nutFree == false)){
 			included = false;
 		}
+		else if((document.querySelector(".veganCheckbox").checked) && (prods[i].vegan == false)) {
+			included = false;
+		}
 		else if ((document.querySelector(".organicCheckbox").checked) && (prods[i].organic == false)){
 			included = false;
 		}
 		if(included){
-			all_products.push({name: prods[i].name, price: prods[i].price});
+			all_products.push({name: prods[i].name, price: prods[i].price, img: prods[i].img});
 		}
+		
 	}
+	console.log("restrictListProducts: ", all_products);
 	return all_products;
 }
+
+// TO DO: CHANGE THIS FUNCTION
 
 // Calculate the total price of items, with received parameter being a list of products
 function getTotalPrice(chosenProducts) {
